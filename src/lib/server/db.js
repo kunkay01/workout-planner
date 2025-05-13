@@ -62,6 +62,29 @@ async function getWorkout(id) {
     return workout;
 }
 
+// Get workout by id
+async function updateWorkout(workout) {
+    try {
+        const collection = db.collection("Workout");
+        const filter = { _id: new ObjectId(workout._id) };
+
+        const result = await collection.updateOne(filter, {
+            $set: {
+                name: workout.name,
+                description: workout.description,
+                duration: workout.duration,
+                tags: workout.tags
+            },
+        });
+
+        return result;
+    } catch (error) {
+        // TODO: errorhandling
+        console.log(error.message);
+    }
+    return null;
+}
+
 // async function createMovie(movie) {
 //     try {
 //       const collection = db.collection("movies");
@@ -73,7 +96,7 @@ async function getWorkout(id) {
 //     }
 //     return null;
 //   }
-  
 
 
-export default { getExercises, getWorkouts, getWorkout }
+
+export default { getExercises, getWorkouts, getWorkout, updateWorkout }
