@@ -15,10 +15,16 @@
   function removeTag(tagToRemove) {
     workout.tags = workout.tags.filter((tag) => tag !== tagToRemove);
   }
+
+  function exerciseEdit() {
+    window.location = workout._id +"/exercises";
+  }
 </script>
 
 <div class="actions">
   <a href="/workouts">Back</a>
+  <span class="spacer"></span>
+  <button type="button" class="btn btn-primary" onclick={exerciseEdit}>Exercises</button>
   <form method="POST" action="?/delete">
     <input name="id" class="form-control" type="hidden" value={workout._id} />
     <button type="submit" class="btn btn-danger"> Delete Workout </button>
@@ -61,7 +67,7 @@
     <label for="tags" class="form-label">Tags</label>
     <div class="d-flex flex-wrap gap-2 mb-2">
       {#each workout.tags as tag}
-        <span class="badge bg-primary">
+        <span class="badge text-bg-success">
           {tag}
           <button
             type="button"
@@ -101,6 +107,10 @@
 <style>
   .actions {
     display: flex;
-    justify-content: space-between;
+    gap: 5px;
+  }
+
+  .spacer {
+    flex-grow: 1;
   }
 </style>

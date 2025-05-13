@@ -24,10 +24,9 @@
     height: 100%;
     background-color: #444;
     color: white;
-  }
-  .details {
     padding: 0.5em;
   }
+  
   .name {
     font-weight: bold;
   }

@@ -111,6 +111,79 @@ async function deleteWorkout(id) {
     return null;
 }
 
+async function getWorkoutExercises(id) {
+    let workoutExercises = [];
+    try {
+        const agg = [
+            {
+                '$match': {
+                    'workout_id': id
+                }
+            }, {
+                '$addFields': {
+                    'exerciseObjectId': {
+                        '$toObjectId': '$exercise_id'
+                    }
+                }
+            }, {
+                '$lookup': {
+                    'from': 'Exercise',
+                    'localField': 'exerciseObjectId',
+                    'foreignField': '_id',
+                    'as': 'exercise'
+                }
+            }, {
+                '$unwind': {
+                    'path': '$exercise'
+                }
+            }, {
+                '$project': {
+                    'exerciseObjectId': 0
+                }
+            }
+        ];
+
+        const collection = db.collection('WorkoutExercise');
+        const cursor = await collection.aggregate(agg);
+        workoutExercises = await cursor.toArray();
+
+        workoutExercises.forEach(workoutExercise => {
+            // convert ObjectId to String
+            workoutExercise._id = workoutExercise._id.toString();
+            workoutExercise.exercise._id = workoutExercise.exercise._id.toString();
+        });
+    } catch (error) {
+        // TODO: errorhandling
+    }
+    return workoutExercises;
+}
+
+async function createWorkoutExercise(workoutExercise) {
+    try {
+        const collection = db.collection("WorkoutExercise");
+        const result = await collection.insertOne(workoutExercise);
+        return result.insertedId.toString(); // convert ObjectId to String
+    } catch (error) {
+        // TODO: errorhandling
+        console.log(error.message);
+    }
+    return null;
+}
+
+async function deleteWorkoutExercise(id) {
+    try {
+        const collection = db.collection("WorkoutExercise");
+        const filter = { _id: new ObjectId(id) };
+        const result = await collection.deleteOne(filter);
+
+        return result;
+    } catch (error) {
+        // TODO: errorhandling
+        console.log(error.message);
+    }
+    return null;
+}
 
 
-export default { getExercises, getWorkouts, getWorkout, updateWorkout, createWorkout, deleteWorkout }
+
+export default { getExercises, getWorkouts, getWorkout, updateWorkout, createWorkout, deleteWorkout, getWorkoutExercises, createWorkoutExercise, deleteWorkoutExercise }

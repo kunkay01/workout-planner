@@ -42,7 +42,7 @@
     <label for="tags" class="form-label">Tags</label>
     <div class="d-flex flex-wrap gap-2 mb-2">
       {#each tags as tag}
-        <span class="badge bg-primary">
+        <span class="badge text-bg-success">
           {tag}
           <button
             type="button"
@@ -78,5 +78,3 @@
 
   <button type="submit" class="btn btn-primary"> Create Workout </button>
 </form>
-
-
