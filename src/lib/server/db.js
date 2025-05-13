@@ -85,18 +85,32 @@ async function updateWorkout(workout) {
     return null;
 }
 
-// async function createMovie(movie) {
-//     try {
-//       const collection = db.collection("movies");
-//       const result = await collection.insertOne(movie);
-//       return result.insertedId.toString(); // convert ObjectId to String
-//     } catch (error) {
-//       // TODO: errorhandling
-//       console.log(error.message);
-//     }
-//     return null;
-//   }
+async function createWorkout(workout) {
+    try {
+        const collection = db.collection("Workout");
+        const result = await collection.insertOne(workout);
+        return result.insertedId.toString(); // convert ObjectId to String
+    } catch (error) {
+        // TODO: errorhandling
+        console.log(error.message);
+    }
+    return null;
+}
+
+async function deleteWorkout(id) {
+    try {
+        const collection = db.collection("Workout");
+        const filter = { _id: new ObjectId(id) };
+        const result = await collection.deleteOne(filter);
+
+        return result;
+    } catch (error) {
+        // TODO: errorhandling
+        console.log(error.message);
+    }
+    return null;
+}
 
 
 
-export default { getExercises, getWorkouts, getWorkout, updateWorkout }
+export default { getExercises, getWorkouts, getWorkout, updateWorkout, createWorkout, deleteWorkout }

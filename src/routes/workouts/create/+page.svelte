@@ -1,66 +1,47 @@
 <script>
-  let { data, form } = $props();
-  let workout = $state(data.workout);
+  let { form } = $props();
 
   let newTag = $state("");
+  let tags = $state([]);
 
   function addTag() {
     const trimmed = newTag.trim();
-    if (trimmed && !workout.tags.includes(trimmed)) {
-      workout.tags = [...workout.tags, trimmed];
+    if (trimmed && !tags.includes(trimmed)) {
+      tags = [...tags, trimmed];
       newTag = "";
     }
   }
 
   function removeTag(tagToRemove) {
-    workout.tags = workout.tags.filter((tag) => tag !== tagToRemove);
+    tags = tags.filter((tag) => tag !== tagToRemove);
   }
 </script>
 
-<div class="actions">
-  <a href="/workouts">Back</a>
-  <form method="POST" action="?/delete">
-    <input name="id" class="form-control" type="hidden" value={workout._id} />
-    <button type="submit" class="btn btn-danger"> Delete Workout </button>
-  </form>
-</div>
-<h1>{workout.name}</h1>
+<a href="/workouts">Back</a>
+<h1>Add a Workout</h1>
 
 {#if form?.success}
-  <div class="alert alert-success" role="alert">Workout updated</div>
+  <div class="alert alert-success" role="alert">Workout created</div>
 {/if}
 
-<form method="POST" action="?/update">
-  <div class="mb-3">
-    <input name="id" class="form-control" type="hidden" value={workout._id} />
-  </div>
+<form method="POST" action="?/create">
   <div class="mb-3">
     <label for="name" class="form-label">Name</label>
-    <input name="name" class="form-control" type="text" value={workout.name} />
+    <input name="name" class="form-control" type="text" />
   </div>
   <div class="mb-3">
     <label for="description" class="form-label">Description</label>
-    <input
-      name="description"
-      class="form-control"
-      type="text"
-      value={workout.description}
-    />
+    <input name="description" class="form-control" type="text" />
   </div>
   <div class="mb-3">
     <label for="duration" class="form-label">Duration</label>
-    <input
-      name="duration"
-      class="form-control"
-      type="text"
-      value={workout.duration}
-    />
+    <input name="duration" class="form-control" type="text" />
   </div>
 
   <div class="mb-3">
     <label for="tags" class="form-label">Tags</label>
     <div class="d-flex flex-wrap gap-2 mb-2">
-      {#each workout.tags as tag}
+      {#each tags as tag}
         <span class="badge bg-primary">
           {tag}
           <button
@@ -91,16 +72,11 @@
       name="tags"
       class="form-control"
       type="hidden"
-      value={workout.tags}
+      value={tags}
     />
   </div>
 
-  <button type="submit" class="btn btn-primary"> Update Workout </button>
+  <button type="submit" class="btn btn-primary"> Create Workout </button>
 </form>
 
-<style>
-  .actions {
-    display: flex;
-    justify-content: space-between;
-  }
-</style>
+

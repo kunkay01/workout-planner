@@ -6,7 +6,7 @@
   }
 </script>
 
-<a href="{"/workouts/" + workout._id}">
+<a href={"/workouts/" + workout._id}>
   <div class="workout-card">
     <div class="details">
       <div class="name">
@@ -18,8 +18,10 @@
       <div>
         Duration: {workout.duration} min
       </div>
-      <div>
-        Tags: {workout.tags}
+      <div class="tags">
+        {#each workout.tags as tag}
+          <span class="badge rounded-pill text-bg-success">{tag}</span>
+        {/each}
       </div>
     </div>
   </div>
@@ -41,5 +43,9 @@
 
   a {
     all: unset;
+  }
+
+  .badge {
+    margin-right: 5px;
   }
 </style>
