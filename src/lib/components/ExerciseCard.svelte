@@ -3,13 +3,16 @@
 </script>
 
 <div class="exercise-card">
+  <div>
+    <img class="img-fluid" src={exercise.img} alt="" />
+  </div>
   <div class="details">
     <div class="name">
       {exercise.name}
     </div>
-    <div class="description">
-      Description: {exercise.description}
-    </div>
+    <i>
+      {exercise.description}
+    </i>
     <div class="tags">
       {#each exercise.muscle_groups as muscle_group}
         <span class="badge rounded-pill text-bg-success">{muscle_group}</span>
@@ -26,14 +29,13 @@
     color: white;
     padding: 0.5em;
   }
-  
+
   .name {
     font-weight: bold;
   }
 
-  .description {
-    padding-bottom: 5px;
-    min-height: 50%;
+  .tags {
+    margin-top: 5px;
   }
 
   .badge {

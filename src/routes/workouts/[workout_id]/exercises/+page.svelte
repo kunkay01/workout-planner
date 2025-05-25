@@ -2,12 +2,10 @@
   import ExerciseCard from "$lib/components/ExerciseCard.svelte";
 
   let { data } = $props();
+  
   let workoutExercises = data.workoutExercises;
   let workout = data.workout;
   let exercises = $state(data.exercises);
-
-
-  
 </script>
 
 <a href="/workouts/{workout._id}">Back</a>

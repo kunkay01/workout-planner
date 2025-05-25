@@ -10,14 +10,9 @@
   <div class="workout-card">
     <div class="details">
       <div class="name">
-        {workout.name}
+        {workout.name} ({workout.duration} min)
       </div>
-      <div>
-        Description: {workout.description}
-      </div>
-      <div>
-        Duration: {workout.duration} min
-      </div>
+      <i>{workout.description} </i>
       <div class="tags">
         {#each workout.tags as tag}
           <span class="badge rounded-pill text-bg-success">{tag}</span>
@@ -43,6 +38,10 @@
 
   a {
     all: unset;
+  }
+
+  .tags {
+    margin-top: 5px;
   }
 
   .badge {

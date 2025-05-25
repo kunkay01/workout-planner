@@ -9,23 +9,23 @@ export async function load({ params }) {
 }
 
 export const actions = {
-  delete: async ({request}) => {
+  delete: async ({ request }) => {
     const data = await request.formData();
     await db.deleteWorkoutExercise(data.get("id"));
 
-    return {success: true}
+    return { success: true }
   },
-   create: async ({request}) => {
+  create: async ({ request }) => {
     const data = await request.formData();
-        let workoutExercise = {
-          workout_id: data.get("id"),
-          exercise_id: data.get("exercise"),
-          sets: data.get("sets"),
-          repetitions: data.get("repetitions"),
-        }
+    let workoutExercise = {
+      workout_id: data.get("id"),
+      exercise_id: data.get("exercise"),
+      sets: data.get("sets"),
+      repetitions: data.get("repetitions"),
+    }
 
-        await db.createWorkoutExercise(workoutExercise);
-    
-        return { success: true };
+    await db.createWorkoutExercise(workoutExercise);
+
+    return { success: true };
   },
 }

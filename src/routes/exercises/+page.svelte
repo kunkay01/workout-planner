@@ -10,7 +10,7 @@
 
 <div class="row">
   {#each exercises as exercise}
-    <div class="col-sm-6 col-md-6 col-lg-3 mb-2 gx-2">
+    <div class="col-sm-6 col-lg-3 g-2">
       <ExerciseCard {exercise}></ExerciseCard>
     </div>
   {/each}

@@ -10,24 +10,37 @@
   }
 </script>
 
-<h1>Workouts</h1>
-<p>These are your workouts, you can create, edit and delete them</p>
-<div class="action">
-  <button type="button" class="btn btn-primary" onclick={create}>
-    Create Workout
-  </button>
+<div class="header">
+  <div>
+    <h1>Workouts</h1>
+    <p>These are your workouts, you can create, edit and delete them</p>
+  </div>
+  <span class="spacer"></span>
+  <div class="action">
+    <button type="button" class="btn btn-primary" onclick={create}>
+      Create Workout
+    </button>
+  </div>
 </div>
 
 <div class="row">
   {#each workouts as workout}
-    <div class="col-sm-6 col-md-4 col-lg-3 mb-2 gx-2 workout">
+    <div class="col-sm-6 col-lg-3 g-2 workout">
       <WorkoutCard {workout}></WorkoutCard>
     </div>
   {/each}
 </div>
 
 <style>
+  .header {
+    display: flex;
+  }
+
   .action {
-    margin-bottom: 15px;
+    align-content: center;
+  }
+
+  .spacer {
+    flex-grow: 1;
   }
 </style>

@@ -19,7 +19,6 @@ export const actions = {
     }
 
     await db.updateWorkout(workout);
-
     return { success: true };
   },
   delete: async ({request}) => {
