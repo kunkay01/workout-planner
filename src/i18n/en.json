@@ -1,0 +1,51 @@
+{
+    "main": {
+        "title": "Welcome to Workout-Planner",
+        "subtitle": "Your Planner of Workouts",
+        "data_protection": "Data and images generated with ChatGPT and DALL-E"
+    },
+    "nav": {
+        "page_title": "Workout-Planner",
+        "workouts": "Workouts",
+        "exercises": "Exercises"
+    },
+    "workouts": {
+        "title": "Workouts",
+        "subtitle": "These are your workouts, you can create, edit and delete them",
+        "fields": {
+            "name": "Name",
+            "description": "Description",
+            "duration": "Duration",
+            "tags": "Tags",
+            "tags_add": "Add"           
+        },
+        "edit": {
+            "success": "Workout edited"
+        },
+        "create": {
+            "title": "Add a Workout",
+            "success": "Workout created"
+        },
+        "exercises": {
+            "title": "Exercises for the Workout: ",
+            "sets": "Sets",
+            "repetitions": "Repetitions",
+            "exercise": "Exercise",
+            "action_add": "Add Exercise",
+            "action_remove": "Remove Exercise"
+        },
+        "action_create": "Create Workout",
+        "action_update": "Update Workout",
+        "action_delete": "Delete Workout",
+        "action_exercises": "Exercises"
+        
+        
+    },
+    "exercises": {
+        "title": "Exercises",
+        "subtitle": "These are the exercises which you can choose from to create your perfect workout"
+    },
+    "general": {
+        "back": "back"
+    }
+}

@@ -1,4 +1,5 @@
 <script>
+  import { _ } from "svelte-i18n";
   let { data, form } = $props();
   let workout = $state(data.workout);
 
@@ -22,18 +23,18 @@
 </script>
 
 <div class="actions">
-  <a href="/workouts">Back</a>
+  <a href="/workouts">{$_("general.back")}</a>
   <span class="spacer"></span>
-  <button type="button" class="btn btn-primary" onclick={exerciseEdit}>Exercises</button>
+  <button type="button" class="btn btn-primary" onclick={exerciseEdit}>{$_("workouts.action_exercises")}</button>
   <form method="POST" action="?/delete">
     <input name="id" class="form-control" type="hidden" value={workout._id} />
-    <button type="submit" class="btn btn-danger"> Delete Workout </button>
+    <button type="submit" class="btn btn-danger"> {$_("workouts.action_delete")} </button>
   </form>
 </div>
 <h1>{workout.name}</h1>
 
 {#if form?.success}
-  <div class="alert alert-success" role="alert">Workout updated</div>
+  <div class="alert alert-success" role="alert">{$_("workouts.edit.success")}</div>
 {/if}
 
 <form method="POST" action="?/update">
@@ -41,11 +42,11 @@
     <input name="id" class="form-control" type="hidden" value={workout._id} />
   </div>
   <div class="mb-3">
-    <label for="name" class="form-label">Name</label>
+    <label for="name" class="form-label">{$_("workouts.fields.name")}</label>
     <input name="name" class="form-control" type="text" value={workout.name} />
   </div>
   <div class="mb-3">
-    <label for="description" class="form-label">Description</label>
+    <label for="description" class="form-label">{$_("workouts.fields.description")}</label>
     <input
       name="description"
       class="form-control"
@@ -54,7 +55,7 @@
     />
   </div>
   <div class="mb-3">
-    <label for="duration" class="form-label">Duration</label>
+    <label for="duration" class="form-label">{$_("workouts.fields.duration")}</label>
     <input
       name="duration"
       class="form-control"
@@ -64,7 +65,7 @@
   </div>
 
   <div class="mb-3">
-    <label for="tags" class="form-label">Tags</label>
+    <label for="tags" class="form-label">{$_("workouts.fields.tags")}</label>
     <div class="d-flex flex-wrap gap-2 mb-2">
       {#each workout.tags as tag}
         <span class="badge text-bg-success">
@@ -88,7 +89,7 @@
         placeholder="Add a tag"
       />
       <button class="btn btn-success" type="button" onclick={addTag}>
-        Add
+        {$_("workouts.fields.tags_add")}
       </button>
     </div>
   </div>
@@ -101,7 +102,7 @@
     />
   </div>
 
-  <button type="submit" class="btn btn-primary"> Update Workout </button>
+  <button type="submit" class="btn btn-primary"> {$_("workouts.action_update")} </button>
 </form>
 
 <style>

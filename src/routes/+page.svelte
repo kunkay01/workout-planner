@@ -1,4 +1,9 @@
-<h1>Welcome to Workout-Planner</h1>
-<p>Your Planner of Workouts</p>
+<script>
+  import { _ } from "svelte-i18n";
 
-<p><i>Daten und Bilder generiert mit ChatGPT und DALL-E</i></p>
+</script>
+
+<h1>{$_("main.title")}</h1>
+<p>{$_("main.subtitle")}</p>
+
+<p><i>{$_("main.data_protection")}</i></p>

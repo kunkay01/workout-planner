@@ -1,0 +1,51 @@
+{
+    "main": {
+        "title": "Willkommen bei Workout-Planner",
+        "subtitle": "Ihr Workout-Planer",
+        "data_protection": "Mit ChatGPT und DALL-E erzeugte Daten und Bilder"
+    },
+    "nav": {
+        "page_title": "Workout-Planer",
+        "workouts": "Workouts",
+        "exercises": "Übungen"
+    },
+    "workouts": {
+        "title": "Workouts",
+        "subtitle": "Das sind Ihre Workouts, die Sie erstellen, bearbeiten und löschen können",
+        "fields": {
+            "name": "Name",
+            "description": "Beschreibung",
+            "duration": "Dauer",
+            "tags": "Tags",
+            "tags_add": "hinzufügen"           
+        },
+        "edit": {
+            "success": "Workout bearbeitet"
+        },
+        "create": {
+            "title": "Workout hinzufügen",
+            "success": "Workout erstellt"
+        },
+        "exercises": {
+            "title": "Übungen für das Workout: ",
+            "sets": "Sätze",
+            "repetitions": "Wiederholungen",
+            "exercise": "Übung",
+            "action_add": "Übung hinzufügen",
+            "action_remove": "Übung entfernen"
+        },
+        "action_create": "Workout erstellen",
+        "action_update": "Workout aktualisieren",
+        "action_delete": "Workout löschen",
+        "action_exercises": "Übungen"
+        
+        
+    },
+    "exercises": {
+        "title": "Übungen",
+        "subtitle": "Diese Übungen können Sie auswählen, um Ihr perfektes Workout zu gestalten"
+    },
+    "general": {
+        "back": "zurück"
+    }
+}

@@ -1,6 +1,6 @@
 <script>
   import WorkoutCard from "$lib/components/WorkoutCard.svelte";
-
+  import { _ } from "svelte-i18n";
   let { data } = $props();
 
   let workouts = data.workouts;
@@ -12,13 +12,13 @@
 
 <div class="header">
   <div>
-    <h1>Workouts</h1>
-    <p>These are your workouts, you can create, edit and delete them</p>
+    <h1>{$_("workouts.title")}</h1>
+    <p>{$_("workouts.subtitle")}</p>
   </div>
   <span class="spacer"></span>
   <div class="action">
     <button type="button" class="btn btn-primary" onclick={create}>
-      Create Workout
+      {$_("workouts.action_create")}
     </button>
   </div>
 </div>

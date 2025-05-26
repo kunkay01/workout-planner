@@ -1,4 +1,5 @@
 <script>
+  import { _ } from "svelte-i18n";
   let { form } = $props();
 
   let newTag = $state("");
@@ -17,29 +18,29 @@
   }
 </script>
 
-<a href="/workouts">Back</a>
-<h1>Add a Workout</h1>
+<a href="/workouts">{$_("general.back")}</a>
+<h1>{$_("workouts.create.title")}</h1>
 
 {#if form?.success}
-  <div class="alert alert-success" role="alert">Workout created</div>
+  <div class="alert alert-success" role="alert">{$_("workouts.create.success")}</div>
 {/if}
 
 <form method="POST" action="?/create">
   <div class="mb-3">
-    <label for="name" class="form-label">Name</label>
+    <label for="name" class="form-label">{$_("workouts.fields.name")}</label>
     <input name="name" class="form-control" type="text" />
   </div>
   <div class="mb-3">
-    <label for="description" class="form-label">Description</label>
+    <label for="description" class="form-label">{$_("workouts.fields.description")}</label>
     <input name="description" class="form-control" type="text" />
   </div>
   <div class="mb-3">
-    <label for="duration" class="form-label">Duration</label>
+    <label for="duration" class="form-label">{$_("workouts.fields.duration")}</label>
     <input name="duration" class="form-control" type="text" />
   </div>
 
   <div class="mb-3">
-    <label for="tags" class="form-label">Tags</label>
+    <label for="tags" class="form-label">{$_("workouts.fields.tags")}</label>
     <div class="d-flex flex-wrap gap-2 mb-2">
       {#each tags as tag}
         <span class="badge text-bg-success">
@@ -63,7 +64,7 @@
         placeholder="Add a tag"
       />
       <button class="btn btn-success" type="button" onclick={addTag}>
-        Add
+        {$_("workouts.fields.tags_add")}
       </button>
     </div>
   </div>
@@ -76,5 +77,5 @@
     />
   </div>
 
-  <button type="submit" class="btn btn-primary"> Create Workout </button>
+  <button type="submit" class="btn btn-primary"> {$_("workouts.action_create")} </button>
 </form>

@@ -1,12 +1,13 @@
 <script>
   import ExerciseCard from "$lib/components/ExerciseCard.svelte";
+  import { _ } from "svelte-i18n";
 
   let { data } = $props();
   let exercises = data.exercises;  
 </script>
 
-<h1>Exercises</h1>
-<p>These are the exercises which you can choose from to create your perfect workout</p>
+<h1>{$_("exercises.title")}</h1>
+<p>{$_("exercises.subtitle")}</p>
 
 <div class="row">
   {#each exercises as exercise}

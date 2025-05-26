@@ -1,6 +1,21 @@
 <script>
   import "./styles.css";
+  import { addMessages, _, locale } from "svelte-i18n";
+  import en from "../i18n/en.json";
+  import de from "../i18n/de.json";
+
+
   let { children } = $props();
+
+  //Setup Languagesfiles for Translation
+  addMessages("en", en);
+  addMessages("de", de);
+
+  function setlang(lang) {
+    locale.set(lang);
+  }
+
+  setlang("en");
 </script>
 
 <nav
@@ -8,7 +23,7 @@
   data-bs-theme="dark"
 >
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Workout-Planner</a>
+    <a class="navbar-brand" href="/">{$_("nav.page_title")}</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -24,15 +39,21 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/workouts"
-            >Workouts</a
+            >{$_("nav.workouts")}</a
           >
         </li>
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/exercises"
-            >Exercises</a
+            >{$_("nav.exercises")}</a
           >
         </li>
       </ul>
+
+      <span class="spacer"></span>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary" onclick={() => setlang('de')}>DE</button>
+        <button type="button" class="btn btn-primary" onclick={() => setlang('en')}>EN</button>
+      </div>
     </div>
   </div>
 </nav>
@@ -40,3 +61,9 @@
 <div class="container mt-3">
   {@render children()}
 </div>
+
+<style>
+  .spacer {
+    flex-grow: 1;
+  }
+</style>
