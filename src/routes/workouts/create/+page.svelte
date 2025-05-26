@@ -62,7 +62,7 @@
         class="form-control"
         placeholder="Add a tag"
       />
-      <button class="btn btn-outline-secondary" type="button" onclick={addTag}>
+      <button class="btn btn-success" type="button" onclick={addTag}>
         Add
       </button>
     </div>
